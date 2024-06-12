@@ -1,3 +1,10 @@
+_in
+_out
+configs/ai_configs.py
+PAS.txt
+
+## /\ Custom | Default \/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
