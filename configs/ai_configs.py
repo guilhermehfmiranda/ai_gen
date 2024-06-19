@@ -1,7 +1,13 @@
 ollama_model = 'llama3'
 
-openai_api_key_prefix = 'bearer'
-openai_api_key_content = ''
-openai_api_key = f'{openai_api_key_prefix} {openai_api_key_content}'
-openai_api_url = ''
+openai_api_key = ''
 openai_organization = ''
+openai_api_header = ''
+openai_api_url = ''
+
+rest_api_llm_type = ''
+rest_api_llm_host = ''
+rest_api_llm_path = ''
+rest_api_llm_url = f"{rest_api_llm_host}{rest_api_llm_path}"
+rest_api_llm_header = {'Authorization' : ""}
+rest_api_llm_prompt = 'message'

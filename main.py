@@ -1,7 +1,7 @@
 # import os
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-from configs.llms.ollama import llm
+from configs.llms.rest_api_llm import llm
 
 output_parser = StrOutputParser()
 
