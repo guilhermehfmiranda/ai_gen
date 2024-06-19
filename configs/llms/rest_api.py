@@ -31,8 +31,8 @@ class Rest_API(LLM):
         self
         ,prompt: str
         ,stop: Optional[List[str]] = None
-        ,run_manager: Optional[CallbackManagerForLLMRun] = None
-        ,**kwargs: Any
+        # ,run_manager: Optional[CallbackManagerForLLMRun] = None
+        # ,**kwargs: Any
     ) -> str:
         if stop is not None:
             raise ValueError("stop kwargs are not permitted.")
