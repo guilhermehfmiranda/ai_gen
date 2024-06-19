@@ -1,6 +1,5 @@
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
-import json
 import requests
 from typing import (
     Any
@@ -9,7 +8,7 @@ from typing import (
     ,Optional
 )
 from ..ai_configs import (
-    rest_api_llm_model
+    rest_api_llm_type
     ,rest_api_llm_host
     ,rest_api_llm_url
     ,rest_api_llm_header
@@ -22,7 +21,7 @@ class Rest_API_LLM(LLM):
 
     @property
     def _llm_type(self) -> str:
-        return rest_api_llm_model
+        return rest_api_llm_type
     
     @property
     def identifying_params(self) -> Mapping[str, Any]:
