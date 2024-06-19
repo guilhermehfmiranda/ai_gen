@@ -1,15 +1,30 @@
-# import os
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate
-from configs.llms.rest_api_llm import llm
+from configs.llms import (
+    ollama
+    ,openai
+    ,rest_api_llm
+)
+from utils.ai import AI
+from utils.data import format_converter
 
-output_parser = StrOutputParser()
+system_prompt = ''
+user_input = ''
 
-prompt = ChatPromptTemplate.from_messages([
-    ('system', "You're a coffee deprived data engineer.")
-    ,('user', "{input}")
-])
+ai_output = format_converter(
+    data = (
+        AI(
+            llm = rest_api_llm.llm()
+        )
+        .gen(
+            system_prompt = system_prompt
+            ,user_input = format_converter(
+                data = user_input
+                ,from_format = 'csv'
+                ,to_format = 'json'
+            )
+        )
+    )
+    ,from_format = 'json'
+    ,to_format = 'csv'
+)
 
-chain = prompt | llm | output_parser
-response = chain.invoke({'input': "what do you need right now?"})
-print(response)
+print(ai_output)
