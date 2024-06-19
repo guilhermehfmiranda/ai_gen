@@ -1,15 +1,16 @@
 import httpx
 from langchain_openai import ChatOpenAI
-from ...configs.ai_configs import (
+from ..ai_configs import (
     openai_api_key
     ,openai_organization
 )
 
-llm = ChatOpenAI(
-    api_key = openai_api_key
-    ,organization = openai_organization
-    ,http_client = httpx.Client(verify = False, follow_redirects = True)
-)
+def llm():
+    return ChatOpenAI(
+        api_key = openai_api_key
+        ,organization = openai_organization
+        ,http_client = httpx.Client(verify = False, follow_redirects = True)
+    )
 
 # client: Any = Field(default=None, exclude=True)  #: :meta private:
 

@@ -1,11 +1,12 @@
 from langchain_community.llms import Ollama
-from ...configs.ai_configs import (
+from ..ai_configs import (
     ollama_model
 )
 
-llm = Ollama(
-    model = ollama_model
-)
+def llm():
+    return Ollama(
+        model = ollama_model
+    )
 
 # base_url: str = "http://localhost:11434"
 """Base url the model is hosted under."""

@@ -1,5 +1,3 @@
-from langchain.callbacks.manager import CallbackManagerForLLMRun
-from langchain.llms.base import LLM
 import requests
 from typing import (
     Any
@@ -7,6 +5,8 @@ from typing import (
     ,Mapping
     ,Optional
 )
+from langchain.callbacks.manager import CallbackManagerForLLMRun
+from langchain.llms.base import LLM
 from ..ai_configs import (
     rest_api_llm_type
     ,rest_api_llm_host
@@ -46,4 +46,5 @@ class Rest_API_LLM(LLM):
         request.raise_for_status()
         return request.content
 
-llm = Rest_API_LLM()
+def llm():
+    return Rest_API_LLM()
