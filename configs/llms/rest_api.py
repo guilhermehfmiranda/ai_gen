@@ -8,20 +8,20 @@ from typing import (
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
 from ..ai_configs import (
-    rest_api_llm_type
-    ,rest_api_llm_host
-    ,rest_api_llm_url
-    ,rest_api_llm_header
-    ,rest_api_llm_prompt
+    rest_api_type
+    ,rest_api_host
+    ,rest_api_url
+    ,rest_api_header
+    ,rest_api_prompt
 )
 
-class Rest_API_LLM(LLM):
-    llm_host = rest_api_llm_host
-    llm_url = rest_api_llm_url
+class Rest_API(LLM):
+    llm_host = rest_api_host
+    llm_url = rest_api_url
 
     @property
     def _llm_type(self) -> str:
-        return rest_api_llm_type
+        return rest_api_type
     
     @property
     def identifying_params(self) -> Mapping[str, Any]:
@@ -38,13 +38,13 @@ class Rest_API_LLM(LLM):
             raise ValueError("stop kwargs are not permitted.")
         request = requests.post(
             self.llm_url
-            ,headers = rest_api_llm_header
+            ,headers = rest_api_header
             ,json = {
-                rest_api_llm_prompt : prompt
+                rest_api_prompt : prompt
             }
         )
         request.raise_for_status()
         return request.content
 
 def llm():
-    return Rest_API_LLM()
+    return Rest_API()
